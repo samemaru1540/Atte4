@@ -15,11 +15,16 @@ class CreateTimesTable extends Migration
     {
         Schema::create('times', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->unsignedBigInteger('user_id');  // ユーザーID
             $table->date('date');
             $table->time('attend');
             $table->time('leave')->nullable();
             $table->timestamps();
+
+            //ユーザーとの関連付け
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // 勤務日はユニーク（1日1回）
+            $table->unique(['user_id', 'date']);
         });
     }
 

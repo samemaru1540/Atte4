@@ -29,10 +29,12 @@
             <li class="header-nav__item">
               <a class="header-nav__link" href="/date">日付一覧</a>
             </li>
-            <li class="header-nav__item">
-              <a class="header-nav__link" href="/logout">ホーム</a>
-            </li>
-            </li>
+            <form class="form" action="/logout" method="post">
+              @csrf
+              <li class="header-nav__item">
+                <button class="header-nav__button">ログアウト</button>
+              </li>
+            </form>
           </ul>
         </nav>
       </div>
