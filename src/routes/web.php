@@ -17,7 +17,7 @@ use App\Http\Controllers\AttendanceController;
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index']);
-
+    Route::get('/date', [AuthController::class, 'date']);
     Route::get('/attendance', [AttendanceController::class, 'attendance']);
     Route::post('/attendance', [AttendanceController::class, 'attendance'])->name('attendance.attendance');
 

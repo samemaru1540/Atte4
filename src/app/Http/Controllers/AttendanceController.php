@@ -157,11 +157,21 @@ class AttendanceController extends Controller
 
     public function totalBreak()
     {
-        $totalBreak = $break->diffInSeconds($endDate);
+        $totalBreak = $break->diffInSeconds($breakEnd);
 
-// 4.秒数から時間、分、秒を計算
-$hours = floor($diffInSeconds / 3600);
-$minutes = floor(($diffInSeconds % 3600) / 60);
-$seconds = $diffInSeconds % 60;
+        // 4.秒数から時間、分、秒を計算
+        $hours = floor($diffInSeconds / 3600);
+        $minutes = floor(($diffInSeconds % 3600) / 60);
+        $seconds = $diffInSeconds % 60;
+    }
+
+    public function totalWork()
+    {
+        $totalWork = $attend->diffInSeconds($leave);
+
+        // 4.秒数から時間、分、秒を計算
+        $hours = floor($diffInSeconds / 3600);
+        $minutes = floor(($diffInSeconds % 3600) / 60);
+        $seconds = $diffInSeconds % 60;
     }
 }
