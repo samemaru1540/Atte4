@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Time;
 use App\Models\Rest;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,12 +35,12 @@ class AttendanceController extends Controller
     protected function attend()
     {
         $user = Auth::user();
-        $today = now()->format('Y-m-d');
-        $time = new Carbon();'2018-08-07 19:55:33'
+        $date = Carbon::now()->toDateString();
+        $newTime = new carbon('2021-11-01 10:00:00');
 
         // すでに出勤していないか確認
         $existingTime = Time::where('user_id', $user->id)
-                            ->where('date', $today)
+                            ->where('date', $date)
                             ->first();
 
         if ($existingTime) {
@@ -48,17 +50,19 @@ class AttendanceController extends Controller
         // 新規出勤の記録
         $time = Time::create([
             'user_id' => $user->id,
-            'date' => $today,
-            'attend' => now(),
+            'date' => $date,
+            'attend' => $newTime->toTimeString(),
         ]);
 
         return redirect()->back()->with('message', '勤務を開始しました');
     }
 
     // 勤務終了の処理
-    protected function leave($user)
+    protected function leave()
     {
+        $user = Auth::user();
         $today = now()->format('Y-m-d');
+        $newTime = new Carbon('2021-11-01 20:00:00');
 
         // 当日の出勤データを取得
         $time = Time::where('user_id', $user->id)
@@ -71,16 +75,18 @@ class AttendanceController extends Controller
 
         // 退勤の記録
         $time->update([
-            'leave' => now(),
+            'leave' => $newTime->toTimeString(),
         ]);
 
         return redirect()->back()->with('message', '勤務を終了しました');
     }
 
     // 休憩開始の処理
-    protected function break($user)
+    protected function break()
     {
+        $user = Auth::user();
         $today = now()->format('Y-m-d');
+        $newTime = Carbon::now()->toTimestring();
 
         // 出勤レコードを確認
         $time = Time::where('user_id', $user->id)
@@ -94,16 +100,18 @@ class AttendanceController extends Controller
         // 休憩開始の記録
         Rest::create([
             'time_id' => $time->id,
-            'break' => now(),
+            'break' => $newTime->toTimeString(),
         ]);
 
         return redirect()->back()->with('message', '休憩を開始しました');
     }
 
     // 休憩終了の処理
-    protected function endBreak($user)
+    protected function endBreak()
     {
+        $user = Auth::user();
         $today = now()->format('Y-m-d');
+        $newTime = Carbon::now()->toTimestring();
 
         // 出勤レコードを確認
         $time = Time::where('user_id', $user->id)
@@ -125,7 +133,7 @@ class AttendanceController extends Controller
 
         // 休憩終了の記録
         $rest->update([
-            'break_end' => now(),
+            'break_end' => $newTime->toTimeString(),
         ]);
 
         return redirect()->back()->with('message', '休憩を終了しました');

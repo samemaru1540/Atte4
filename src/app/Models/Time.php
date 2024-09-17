@@ -11,7 +11,7 @@ class Time extends Model
 
     protected $fillable = [
         'user_id',
-        'work_date',
+        'date',
         'attend',
         'leave',
     ];
