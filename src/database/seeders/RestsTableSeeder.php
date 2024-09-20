@@ -39,6 +39,81 @@ class RestsTableSeeder extends Seeder
                 'time_id' => 5,
                 'break' => '01:00:00',
                 'break_end' => '01:30:00'
+            ],
+            [
+                'time_id' => 6,
+                'break' => '01:00:00',
+                'break_end' => '01:30:00'
+            ],
+            [
+                'time_id' => 7,
+                'break' => '01:00:00',
+                'break_end' => '01:30:00'
+            ],
+            [
+                'time_id' => 8,
+                'break' => '01:00:00',
+                'break_end' => '01:30:00'
+            ],
+            [
+                'time_id' => 9,
+                'break' => '01:00:00',
+                'break_end' => '01:30:00'
+            ],
+            [
+                'time_id' => 10,
+                'break' => '01:00:00',
+                'break_end' => '01:30:00'
+            ],
+            [
+                'time_id' => 11,
+                'break' => '01:00:00',
+                'break_end' => '01:30:00'
+            ],
+            [
+                'time_id' => 12,
+                'break' => '01:00:00',
+                'break_end' => '01:30:00'
+            ],
+            [
+                'time_id' => 13,
+                'break' => '01:00:00',
+                'break_end' => '01:30:00'
+            ],
+            [
+                'time_id' => 14,
+                'break' => '01:00:00',
+                'break_end' => '01:30:00'
+            ],
+            [
+                'time_id' => 15,
+                'break' => '01:00:00',
+                'break_end' => '01:30:00'
+            ],
+            [
+                'time_id' => 16,
+                'break' => '01:00:00',
+                'break_end' => '01:30:00'
+            ],
+            [
+                'time_id' => 17,
+                'break' => '01:00:00',
+                'break_end' => '01:30:00'
+            ],
+            [
+                'time_id' => 18,
+                'break' => '01:00:00',
+                'break_end' => '01:30:00'
+            ],
+            [
+                'time_id' => 19,
+                'break' => '01:00:00',
+                'break_end' => '01:30:00'
+            ],
+            [
+                'time_id' => 20,
+                'break' => '01:00:00',
+                'break_end' => '01:30:00'
             ]
         ]);
     }
