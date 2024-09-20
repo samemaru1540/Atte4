@@ -16,11 +16,14 @@ use App\Http\Controllers\AttendanceController;
 */
 
 Route::middleware('auth')->group(function () {
+    //ログインフォーム
     Route::get('/', [AuthController::class, 'index']);
-    Route::get('/date', [AuthController::class, 'date']);
-    Route::get('/attendance', [AttendanceController::class, 'attendance']);
-    Route::post('/attendance', [AttendanceController::class, 'attendance'])->name('attendance.attendance');
-
+    //日付一覧フォーム
+    Route::get('/date', [AttendanceController::class, 'indexDate'])
+        ->name('date');
+    Route::post('/attendance/date', [AttendanceController::class, 'perDate'])
+        ->name('per/date');
+    //打刻機能
     Route::post('/attend', [AttendanceController::class, 'attend']);
     Route::post('/leave', [AttendanceController::class, 'leave']);
     Route::post('/break', [AttendanceController::class, 'break']);

@@ -1,0 +1,78 @@
+.attendance__content {
+  margin: 0 auto;
+  height: 1000px;
+  padding: 60px 30px;
+  background-color: #f2f2f2;
+}
+
+.date__change-button {
+  font-size: 20px;
+  width: 30px;
+  height: 20px;
+  margin: 40px;
+  padding: 0 0 20px 0px;
+  background-color: white;
+  border-color: blue;
+  color: blue;
+}
+
+.header__text {
+  font-size: 30px;
+}
+
+.header__wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.attendance__table {
+  display: flex;
+  justify-content: center;
+}
+
+.table__row{
+  font-size: 20px;
+}
+
+.attendance__table-item {
+  width: 600px;
+  padding: 30px;
+  border-top: 2px solid #8d8d8d;
+}
+
+.table__rows {
+  font-size: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.attendance__table-items {
+  font-size: 20px;
+  height: 100px;
+  width: calc(100% / 5);
+  padding: 30px;
+  border-top: 2px solid #8d8d8d;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  padding: 30px;
+}
+
+.page-item {
+  color: #2384cf;
+  padding: 10px 20px;
+  background-color: white;
+  border: 3px solid #f2f2f2;
+}
+
+.page-link {
+  color: #2384cf;
+  width: 30px;
+  height: 30px;
+  text-decoration: none;
+}

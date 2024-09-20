@@ -10,8 +10,5 @@ class AuthController extends Controller
         return view('index');
     }
 
-        public function date()
-    {
-        return view('date');
-    }
+
 }

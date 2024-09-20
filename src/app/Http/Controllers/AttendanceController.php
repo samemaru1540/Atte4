@@ -7,30 +7,10 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AttendanceController extends Controller
 {
-    public function attendance(Request $request)
-    {
-        $user = Auth::user();
-
-        if ($request->has('attend')) {
-            // 勤務開始の処理
-            return $this->attend($user);
-        } elseif ($request->has('leave')) {
-            // 勤務終了の処理
-            return $this->leave($user);
-        } elseif ($request->has('break')) {
-            // 休憩開始の処理
-            return $this->startBreak($user);
-        } elseif ($request->has('break_end')) {
-            // 休憩終了の処理
-            return $this->endBreak($user);
-        }
-
-        return redirect()->back()->with('error', '不正な操作です');
-    }
-
     // 勤務開始の処理
     protected function attend()
     {
@@ -139,39 +119,31 @@ class AttendanceController extends Controller
         return redirect()->back()->with('message', '休憩を終了しました');
     }
 
-    public function index(Request $request)
+    public function indexDate(Request $request)
     {
-        $user = Auth::user();
+        $displayDate = Carbon::now();
 
-        // クエリパラメータから日付を取得 (無ければ今日の日付)
-        $date = $request->input('date', now()->format('Y-m-d'));
+        $users = User::join('times', 'users.id', '=', 'times.user_id')
+                    ->join('rests', 'times.id', '=', 'rests.time_Id')
+                    ->paginate(5);
 
-        // 日付ごとに勤務・休憩データを取得
-        $time = Time::where('user_id', $user->id)
-                    ->where('date', $date)
-                    ->with('rests')  // 休憩データも一緒に取得
-                    ->first();
-
-        return view('attendance.index', compact('time', 'date'));
+        $times = Time::find('attend','leave');
+        return view('date', compact('users', 'displayDate'));
     }
 
-    public function totalBreak()
+    public function perDate(Request $request)
     {
-        $totalBreak = $break->diffInSeconds($breakEnd);
+        $displayDate = Carbon::parse($request->input('displayDate'));
+        if ($request->has('prevDate')) {
+            $displayDate->subDay();
+            }
+        if ($request->has('nextDate')) {
+            $displayDate->addDay();
+            }
+        $users = User::join('times', 'users.id', '=', 'times.user_id')
+                    ->join('rests', 'times.id', '=', 'rests.time_Id')
+                    ->paginate(5);
 
-        // 4.秒数から時間、分、秒を計算
-        $hours = floor($diffInSeconds / 3600);
-        $minutes = floor(($diffInSeconds % 3600) / 60);
-        $seconds = $diffInSeconds % 60;
-    }
-
-    public function totalWork()
-    {
-        $totalWork = $attend->diffInSeconds($leave);
-
-        // 4.秒数から時間、分、秒を計算
-        $hours = floor($diffInSeconds / 3600);
-        $minutes = floor(($diffInSeconds % 3600) / 60);
-        $seconds = $diffInSeconds % 60;
+        return view('date', compact('users', 'displayDate'));
     }
 }

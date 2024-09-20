@@ -23,7 +23,7 @@ class Time extends Model
     }
 
     // 休憩情報とのリレーション
-    public function rests()
+    public function rest()
     {
         return $this->hasMany(Rest::class);
     }
