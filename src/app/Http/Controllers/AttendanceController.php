@@ -121,13 +121,36 @@ class AttendanceController extends Controller
 
     public function indexDate(Request $request)
     {
+        $user = Auth::user();
         $displayDate = Carbon::now();
 
         $users = User::join('times', 'users.id', '=', 'times.user_id')
                     ->join('rests', 'times.id', '=', 'rests.time_Id')
                     ->paginate(5);
 
-        $times = Time::find('attend','leave');
+        $users->each(function ($user) {
+            $totalWorkTime = 0;
+                foreach ($user->time as $time) {
+                // 勤務時間の計算 (出勤時間と退勤時間の差)
+                    $workTime = Carbon::parse($time->attend)->diffInSeconds(Carbon::parse($time->leave));
+
+            // 休憩時間の計算
+            $totalBreakTime = 0;
+                foreach ($time->rest as $rest) {
+                    $breakTime = Carbon::parse($rest->break)->diffInSeconds(Carbon::parse($rest->break_end));
+                    $totalBreakTime += $breakTime;
+            }
+
+            // トータル勤務時間 = 勤務時間 - 休憩時間
+            $totalWorkTime += ($workTime - $totalBreakTime);
+            }
+            // ユーザーにトータル勤務時間を追加
+            $user->totalWorkTime = gmdate('H:i:s', $totalWorkTime);
+            //ユーザーにトータル休憩時間を追加
+            $user->totalBreakTime = gmdate('H:i:s', $totalBreakTime);
+        });
+
+    // ビューに渡す
         return view('date', compact('users', 'displayDate'));
     }
 

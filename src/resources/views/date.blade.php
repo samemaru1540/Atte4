@@ -31,8 +31,8 @@
                 <th class="attendance__table-items">{{ $user ->name }}</th>
                 <th class="attendance__table-items">{{ $user ->attend }}</th>
                 <th class="attendance__table-items">{{ $user ->leave }}</th>
-                <th class="attendance__table-items">{{ $user ->break }}</th>
-                <th class="attendance__table-items">{{ $user ->break_end }}</th>
+                <th class="attendance__table-items">{{ $user ->totalBreakTime }}</th>
+                <th class="attendance__table-items">{{ $user ->totalWorkTime }}</th>
               @endforeach
           </tr>
         </table>
