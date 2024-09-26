@@ -20,7 +20,7 @@
 }
 
 .attendance-users__table-item {
-  width: 600px;
+  width: 560px;
   padding: 30px;
   border-top: 2px solid #8d8d8d;
 }
@@ -29,14 +29,14 @@
   font-size: 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
   width: 100%;
 }
 
 .attendance-users__table-items {
   font-size: 20px;
   height: 100px;
-  width: calc(100% / 3);
+  width: calc(80% / 3);
   padding: 30px;
   border-top: 2px solid #8d8d8d;
 }
