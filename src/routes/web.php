@@ -19,8 +19,9 @@ Route::middleware('auth')->group(function () {
     //ログインフォーム
     Route::get('/', [AuthController::class, 'index']);
     //日付一覧フォーム
-    Route::get('/date', [AttendanceController::class, 'indexDate'])
-        ->name('date');
+    Route::get('/attendance', [AttendanceController::class, 'indexDate'])
+        ->name('attendance');
+    Route::get('/attendance/users', [AttendanceController::class, 'users'])->name('users');
     Route::post('/attendance/date', [AttendanceController::class, 'perDate'])
         ->name('per/date');
     //打刻機能

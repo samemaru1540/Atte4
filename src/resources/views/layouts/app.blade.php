@@ -27,7 +27,10 @@
               <a class="header-nav__link" href="/">ホーム</a>
             </li>
             <li class="header-nav__item">
-              <a class="header-nav__link" href="/date">日付一覧</a>
+              <a class="header-nav__link" href="/attendance">日付一覧</a>
+            </li>
+            <li class="header-nav__item">
+              <a class="header-nav__link" href="/attendance/users">ユーザー一覧</a>
             </li>
             <form class="form" action="/logout" method="post">
               @csrf

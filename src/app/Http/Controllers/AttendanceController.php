@@ -151,7 +151,7 @@ class AttendanceController extends Controller
         });
 
     // ビューに渡す
-        return view('date', compact('users', 'displayDate'));
+        return view('attendance', compact('users', 'displayDate'));
     }
 
     public function perDate(Request $request)
@@ -167,6 +167,15 @@ class AttendanceController extends Controller
                     ->join('rests', 'times.id', '=', 'rests.time_Id')
                     ->paginate(5);
 
-        return view('date', compact('users', 'displayDate'));
+        return view('attendance', compact('users', 'displayDate'));
+    }
+
+    // ユーザー一覧表示
+    public function users()
+    {
+        $users = User::paginate(5);
+        $displayDate = Carbon::now();
+
+        return view('attendance_user', compact('users', 'displayDate'));
     }
 }
