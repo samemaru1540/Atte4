@@ -12,50 +12,60 @@
 phpMyAdmin:：http://localhost:8080/
 
 ## 機能一覧
-ログイン機能
-ログアウト機能
-勤怠登録機能
-日付別勤怠一覧
-ユーザー一覧
+- ログイン機能
+- ログアウト機能
+- 勤怠登録機能
+- 日付別勤怠一覧
+- ユーザー一覧
 
 ## 使用技術（実行環境）
-laravel 8.83.27
-mysql 10.3.39
-php 7.4.9
+- laravel 8.83.27
+- mysql 10.3.39
+- php 7.4.9
 
 ## テーブル設計
-[テーブル仕様書](<../../Downloads/岩井妙華さん01 Web開発初級生徒様用案件シート ver.2.0 - テーブル仕様書.pdf>)
+![alt text](<スクリーンショット 2024-10-01 23.45.14.png>)
 
 ## ER図
-![ER図](index.drawio.png)
+![alt text](<スクリーンショット 2024-10-01 23.46.08.png>)
 
 ## 環境開発
-Dockerビルド
-1. git clone 
+**Dockerビルド**
+1. `git clone git@github.com:samemaru1540/Atte4.git`
 2. DockerDesktopアプリを立ち上げる
-3. docker-compose up -d --build
+3. `docker-compose up -d --build`
 
-## laravelの環境構築
-1. docker-compose exec php bash
-2. composer install
+**laravelの環境構築**
+1. `docker-compose exec php bash`
+2. `composer install`
 3. 新しく.envファイルを作成
 4. .envに以下の環境変数を追加
-  DB_CONNECTION=mysql
-  DB_HOST=mysql
-  DB_PORT=3306
-  DB_DATABASE=laravel_db
-  DB_USERNAME=laravel_user
-  DB_PASSWORD=laravel_pass
+``` text
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_db
+DB_USERNAME=laravel_user
+DB_PASSWORD=laravel_pass
+```
 
 5. アプリケーションキーの作成
-  php artisan key:generate
+``` bash
+php artisan key:generate
+```
+
 6. マイグレーションの実行
-  php artisan migrate
+``` bash
+php artisan migrate
+```
+
 7. シーディングの実行
-  php artisan db:seed
+``` bash
+php artisan db:seed
+```
 
 ## アカウントの種類
 ダミーアカウント
-  *テスト太郎からテスト二重郎までの計20個のアカウント
+- テスト太郎からテスト二重郎までの計20個のアカウント
 ログイン、テスト用アカウント
-  *ログインユーザー
+- ログインユーザー
