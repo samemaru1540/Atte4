@@ -18,6 +18,7 @@
           <th class="attendance-users__table-item">ID</th>
           <th class="attendance-users__table-item">名前</th>
           <th class="attendance-users__table-item">Email</th>
+          <th class="attendance-users__table-item">勤務状況</th>
         </tr>
       </table>
       <table class="attendance-users__table">
@@ -26,6 +27,15 @@
             <th class="attendance-users__table-items">{{ $user ->id }}</th>
             <th class="attendance-users__table-items">{{ $user ->name }}</th>
             <th class="attendance-users__table-items">{{ $user ->email }}</th>
+            @if ($user->status == 1)
+              <td class="attendance-users__table-items">勤務中</td>
+            @elseif($user->status == 2)
+              <td class="attendance-users__table-items">休憩中</td>
+            @elseif($user->status == 3)
+              <td class="attendance-users__table-items">退勤</td>
+            @else
+              <td class="attendance-users__table-items">その他</td>
+            @endif
           @endforeach
         </tr>
       </table>

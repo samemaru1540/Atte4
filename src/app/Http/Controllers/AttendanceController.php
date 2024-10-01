@@ -17,6 +17,7 @@ class AttendanceController extends Controller
         $user = Auth::user();
         $date = Carbon::now()->toDateString();
         $attend = Carbon::now()->toTimestring();
+        $status = 1;
 
         // すでに出勤していないか確認
         $existingTime = Time::where('user_id', $user->id)
@@ -43,6 +44,7 @@ class AttendanceController extends Controller
         $user = Auth::user();
         $date = Carbon::now()->toDateString();
         $leave = Carbon::now()->toTimestring();
+        $status = 3;
 
         // 当日の出勤データを取得
         $time = Time::where('user_id', $user->id)
@@ -67,6 +69,7 @@ class AttendanceController extends Controller
         $user = Auth::user();
         $date = Carbon::now()->toDateString();
         $break = Carbon::now()->toTimestring();
+        $status =2;
 
         // 出勤レコードを確認
         $time = Time::where('user_id', $user->id)
@@ -92,6 +95,7 @@ class AttendanceController extends Controller
         $user = Auth::user();
         $date = Carbon::now()->toDateString();
         $breakEnd = Carbon::now()->toTimestring();
+        $status = 1;
 
         // 出勤レコードを確認
         $time = Time::where('user_id', $user->id)

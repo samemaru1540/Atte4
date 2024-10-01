@@ -28,11 +28,11 @@
         <table class="attendance__table">
             <tr class="table__rows">
               @foreach ($users as $user)
-                <th class="attendance__table-items">{{ $user ->name }}</th>
-                <th class="attendance__table-items">{{ $user ->attend }}</th>
-                <th class="attendance__table-items">{{ $user ->leave }}</th>
-                <th class="attendance__table-items">{{ $user ->totalBreakTime }}</th>
-                <th class="attendance__table-items">{{ $user ->totalWorkTime }}</th>
+                <td class="attendance__table-items">{{ $user ->name }}</td>
+                <td class="attendance__table-items">{{ $user ->attend }}</td>
+                <td class="attendance__table-items">{{ $user ->leave }}</td>
+                <td class="attendance__table-items">{{ $user ->totalBreakTime }}</td>
+                <td class="attendance__table-items">{{ $user ->totalWorkTime }}</td>
               @endforeach
           </tr>
         </table>
