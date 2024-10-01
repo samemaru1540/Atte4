@@ -8,8 +8,8 @@
 模擬案件を通して実戦に近い開発経験を積む
 
 ## アプリケーションURL
-開発環境：http://localhost/
-phpMyAdmin:：http://localhost:8080/
+- 開発環境：http://localhost/
+- phpMyAdmin:：http://localhost:8080/
 
 ## 機能一覧
 - ログイン機能
